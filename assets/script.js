@@ -91,6 +91,11 @@ function hideFirstPage() {
 
 function startQuiz() {
     hideFirstPage();
+    questionEl.innerText = questions[0].q;
+    answerSection.children[0].children[0].innerText = questions[0].answer1;
+    answerSection.children[0].children[1].innerText = questions[0].answer2;
+    answerSection.children[0].children[2].innerText = questions[0].answer3;
+    answerSection.children[0].children[3].innerText = questions[0].answer4;
 }
 
 
