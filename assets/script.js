@@ -4,12 +4,14 @@ var firstPage = document.getElementById("first-page");
 var questionSection = document.getElementById("question-section");
 var questionEl = document.getElementById("question");
 var answerSection = document.getElementById("answer-section");
+var answer1El = document.getElementById("answer1");
+var answer2El = document.getElementById("answer2");
+var answer3El = document.getElementById("answer3");
+var answer4El = document.getElementById("answer4");
 
-let currentQuestion = {};
-let acceptingAnswers = true;
+
 let score = 0;
 let questionCounter = 0;
-let availableQuestions = [];
 
 let questions = [
     {
@@ -18,7 +20,7 @@ let questions = [
         answer2: "booleans",
         answer3: "alerts",
         answer4: "numbers",
-        correct: 3
+        correct: "alerts"
     },
 
     {
@@ -27,7 +29,7 @@ let questions = [
         answer2: "curly brackets",
         answer3: "parenthesis",
         answer4: "square brackets",
-        correct: 3
+        correct: "parenthesis"
     },
 
     {
@@ -36,7 +38,7 @@ let questions = [
         answer2: "other arrays",
         answer3: "booleans",
         answer4: "all of the above",
-        correct: 4
+        correct: "all of the above"
     },
 
     {
@@ -45,7 +47,7 @@ let questions = [
         answer2: "curly brackets",
         answer3: "quotes",
         answer4: "parenthesis",
-        correct: 3
+        correct: "quotes"
     },
 
     {
@@ -54,7 +56,7 @@ let questions = [
         answer2: "terminal/bash",
         answer3: "for loops",
         answer4: "console log",
-        correct: 4
+        correct: "console log"
     }
 ]
 
@@ -64,44 +66,76 @@ function hideFirstPage() {
     answerSection.setAttribute("style", "display:block;");
 }
 
-// function setAvailableQuestions() {
-//     var totalQuestion = questions.length();
-//     for(i=0; i<totalQuestion; i++) {
-//         availableQuestions.push(questions[i]);
-//     }
-// }
-
-// startGame = () => {
-//     questionCounter = 0;
-//     score = 0;
-//     availableQuestions = [...questions];
-//     // console.log(availableQuestions);
-//     displayQuestions(availableQuestions);
-// }
-
-
-
-// displayQuestions = (availableQuestions) => {
-//     // questionCounter++;
-//     // const questionIndex = Math.floor(Math.random() * availableQuestions.length);
-//     // currentQuestion = availableQuestions[questionIndex];
-//     // questionEl.innerText = currentQuestion.questions;
-//     console.log(questions)
-// }
-
 function startQuiz() {
     hideFirstPage();
-    questionEl.innerText = questions[0].q;
-    answerSection.children[0].children[0].innerText = questions[0].answer1;
-    answerSection.children[0].children[1].innerText = questions[0].answer2;
-    answerSection.children[0].children[2].innerText = questions[0].answer3;
-    answerSection.children[0].children[3].innerText = questions[0].answer4;
+    displayQuestions();
+}
+
+function endQuiz() {
+    console.log("Congrats");
+}
+
+function displayQuestions() {
+    if(questionCounter < questions.length) {
+            questionEl.innerText = questions[questionCounter].q;
+    answer1El.innerText = questions[questionCounter].answer1;
+    answer2El.innerText = questions[questionCounter].answer2;
+    answer3El.innerText = questions[questionCounter].answer3;
+    answer4El.innerText = questions[questionCounter].answer4;
+    } else {
+        endQuiz();
+    }
+
+}
+
+function checkAnswer1(event) {
+    console.log(event.target.innerText);
+    if(questions[questionCounter].correct === event.target.innerText) {
+        console.log("correct");
+        
+    } else {
+        console.log("wrong");
+    }
+    questionCounter++;
+    displayQuestions();
+}
+function checkAnswer2(event) {
+    console.log(event.target.innerText);
+    if(questions[questionCounter].correct === event.target.innerText) {
+        console.log("correct");
+        
+    } else {
+        console.log("wrong");
+    }
+    questionCounter++;
+    displayQuestions();
+}
+function checkAnswer3(event) {
+    console.log(event.target.innerText);
+    if(questions[questionCounter].correct === event.target.innerText) {
+        console.log("correct");
+        
+    } else {
+        console.log("wrong");
+    }
+    questionCounter++;
+    displayQuestions();
+}
+function checkAnswer4(event) {
+    console.log(event.target.innerText);
+    if(questions[questionCounter].correct === event.target.innerText) {
+        console.log("correct");
+        
+    } else {
+        console.log("wrong");
+    }
+    questionCounter++;
+    displayQuestions();
 }
 
 
-
-
-
-
-
-startButton.addEventListener("click", startQuiz)
+startButton.addEventListener("click", startQuiz);
+answer1El.addEventListener("click", checkAnswer1);
+answer2El.addEventListener("click", checkAnswer2);
+answer3El.addEventListener("click", checkAnswer3);
+answer4El.addEventListener("click", checkAnswer4);
