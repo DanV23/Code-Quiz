@@ -1,78 +1,102 @@
 
 var startButton = document.getElementById("start-button");
 var firstPage = document.getElementById("first-page");
-var questionSection = document.getElementById("question-section")
+var questionSection = document.getElementById("question-section");
 var questionEl = document.getElementById("question");
-var answerSection = document.getElementById("answer-section")
+var answerSection = document.getElementById("answer-section");
 
+let currentQuestion = {};
+let acceptingAnswers = true;
+let score = 0;
+let questionCounter = 0;
+let availableQuestions = [];
 
-
-var questions = [
+let questions = [
     {
-        question: "Commonly used data types DO NOT include: ",
-        answers: [ 
-            {text: "strings", true: false}, 
-            {text: "booleans", true: false}, 
-            {text: "alerts", true: true}, 
-            {text: "numbers", true: false}
-        ]
+        q: "Commonly used data types DO NOT include: ",
+        answer1: "strings",
+        answer2: "booleans",
+        answer3: "alerts",
+        answer4: "numbers",
+        correct: 3
     },
 
     {
-        question: "The condition in an if / else statement is enclosed with _____________________.",
-        answers: [
-            {text: "quotes", true: false}, 
-            {text: "curly brackets", true: false},
-            {text: "parethesis", true: true}, 
-            {text: "square brackets", true: false}
-        ]
+        q: "The condition in an if / else statement is enclosed with _____________________.",
+        answer1: "quotes",
+        answer2: "curly brackets",
+        answer3: "parenthesis",
+        answer4: "square brackets",
+        correct: 3
     },
 
     {
-        question: "Arrays in JavaScript can be used to store __________________.",
-        answers: [
-            {text: "numbers and strings", true: false},
-            {text: "other arrays", true: false}, 
-            {text: "booleans", true: false}, 
-            {text: "all of the above", true: true}
-        ]
+        q: "Arrays in JavaScript can be used to store __________________.",
+        answer1: "numbers and strings",
+        answer2: "other arrays",
+        answer3: "booleans",
+        answer4: "all of the above",
+        correct: 4
     },
 
     {
-        question: "String values must be enclosed within ___________ when being assigned to variables.",
-        answers: [
-            {text: "commas", true: false},
-            {text: "curly brackets", true: false},
-            {text: "quotes", true: true},
-            {text: "parenthesis", true: false}
-        ]
+        q: "String values must be enclosed within ___________ when being assigned to variables.",
+        answer1: "commas",
+        answer2: "curly brackets",
+        answer3: "quotes",
+        answer4: "parenthesis",
+        correct: 3
     },
 
     {
-        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        answers: [
-            {text: "JavaScript", true: false},
-            {text: "terminal/bash", true: false},
-            {text: "for loops", true: false},
-            {text: "console log", true: true}
-        ]
+        q: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        answer1: "JavaScript",
+        answer2: "terminal/bash",
+        answer3: "for loops",
+        answer4: "console log",
+        correct: 4
     }
 ]
 
-function startGame() {
-
-    startButton.addEventListener("click", function() {
-        firstPage.setAttribute("style", "display:none;");
-        questionSection.setAttribute("style", "display:block;");
-        answerSection.setAttribute("style", "display:block;");
-        displayQuestions()
-    })
+function hideFirstPage() {
+    firstPage.setAttribute("style", "display:none;");
+    questionSection.setAttribute("style", "display:block;");
+    answerSection.setAttribute("style", "display:block;");
 }
-startGame();
 
-
-
-// function displayQuestions() {
-//     questionEl.innerText = questions.question;    
+// function setAvailableQuestions() {
+//     var totalQuestion = questions.length();
+//     for(i=0; i<totalQuestion; i++) {
+//         availableQuestions.push(questions[i]);
+//     }
 // }
-// displayQuestions()
+
+// startGame = () => {
+//     questionCounter = 0;
+//     score = 0;
+//     availableQuestions = [...questions];
+//     // console.log(availableQuestions);
+//     displayQuestions(availableQuestions);
+// }
+
+
+
+// displayQuestions = (availableQuestions) => {
+//     // questionCounter++;
+//     // const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+//     // currentQuestion = availableQuestions[questionIndex];
+//     // questionEl.innerText = currentQuestion.questions;
+//     console.log(questions)
+// }
+
+function startQuiz() {
+    hideFirstPage();
+}
+
+
+
+
+
+
+
+startButton.addEventListener("click", startQuiz)
